@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/businessCardFragment2">
+    <fragment
+        android:id="@+id/businessCardFragment2"
+        android:name="com.example.businesscard.feature.business_card_fragment.BusinessCardFragment"
+        android:label="fragment_business_card"
+        tools:layout="@layout/fragment_business_card" />
+</navigation>
