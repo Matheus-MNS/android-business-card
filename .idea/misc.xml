@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/circle_button.xml" value="0.22" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/ic_add.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/ic_close.xml" value="0.19814814814814816" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/ic_save.xml" value="0.2203125" />
+        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/rectangle_view.xml" value="0.2203125" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/fragment_add_business_card.xml" value="0.2" />
+        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/circle_button.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/fragment_add_business_card.xml" value="0.33" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/fragment_business_card.xml" value="0.33" />
+        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/fragment_color_picker_dialog.xml" value="0.16" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/item_business_card.xml" value="0.33" />
+        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/item_color.xml" value="0.1" />
       </map>
     </option>
   </component>
