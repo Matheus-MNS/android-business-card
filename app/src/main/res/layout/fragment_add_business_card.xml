@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.add_business_card_fragmnet.AddBusinessCardFragment">
+    tools:context=".feature.add_business_card_fragment.AddBusinessCardFragment">
 
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -111,16 +111,26 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/selectColorFab"
+    <View
+        android:id="@+id/cardBackground"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/rectangle_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailTil" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hintBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/celtic_blue"
-        android:contentDescription="@string/add_business_card"
-        app:borderWidth="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_color_lens" />
+        android:layout_marginStart="16dp"
+        android:text="@string/card_background_label"
+        app:layout_constraintBottom_toBottomOf="@id/cardBackground"
+        app:layout_constraintStart_toStartOf="@id/cardBackground"
+        app:layout_constraintTop_toTopOf="@id/cardBackground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
