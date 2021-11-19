@@ -1,11 +1,11 @@
 package com.example.businesscard.common.extensions
 
 import androidx.fragment.app.Fragment
-import com.example.businesscard.common.utils.ColorsEnum
+import com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker.ColorsEnum
 
 
 fun Fragment.showColorPickerDialog(
-    selectedColorAction: (Int) -> Unit = {}
+    selectedColorAction: (ColorsEnum) -> Unit = {}
 ) {
     activity?.showColorPickerDialog(selectedColorAction)
 }
