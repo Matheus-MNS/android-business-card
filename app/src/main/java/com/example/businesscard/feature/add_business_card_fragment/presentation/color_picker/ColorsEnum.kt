@@ -1,4 +1,4 @@
-package com.example.businesscard.common.utils
+package com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker
 
 import com.example.businesscard.R
 

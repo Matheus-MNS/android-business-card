@@ -1,13 +1,10 @@
-package com.example.businesscard.adapter
+package com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker.adapter
 
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AdapterListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
-import com.example.businesscard.common.utils.AdapterItemWithParameterClickListener
 import com.example.businesscard.databinding.ItemColorBinding
-import com.example.businesscard.common.utils.ColorsEnum
+import com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker.ColorsEnum
 
 class ColorPickerAdapter(private val list: List<ColorsEnum>) :
     RecyclerView.Adapter<ColorPickerAdapter.ViewHolder>() {

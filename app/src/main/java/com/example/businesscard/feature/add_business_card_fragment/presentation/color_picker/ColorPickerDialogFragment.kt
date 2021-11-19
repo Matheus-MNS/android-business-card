@@ -1,16 +1,13 @@
-package com.example.businesscard.feature
+package com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.example.businesscard.adapter.ColorPickerAdapter
+import com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker.adapter.ColorPickerAdapter
 import com.example.businesscard.common.extensions.setWindowFeatures
-import com.example.businesscard.common.extensions.showColorPickerDialog
 import com.example.businesscard.databinding.FragmentColorPickerDialogBinding
-import com.example.businesscard.common.utils.ColorsEnum
 
 class ColorPickerDialogFragment(private val params: Params) : DialogFragment() {
 
@@ -33,12 +30,12 @@ class ColorPickerDialogFragment(private val params: Params) : DialogFragment() {
         val pickerAdapter = ColorPickerAdapter(ColorsEnum.DUMBLIST)
         binding.colorPickerRecycler.adapter = pickerAdapter
         pickerAdapter.onItemClick = {
-            params.selectedColorAction.invoke(it.color)
+            params.selectedColorAction.invoke(it)
             dismiss()
         }
     }
 
     data class Params(
-        var selectedColorAction: (Int) -> Unit = {}
+        var selectedColorAction: (ColorsEnum) -> Unit = {}
     )
 }

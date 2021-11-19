@@ -1,4 +1,4 @@
-package com.example.businesscard.feature.business_card_fragment
+package com.example.businesscard.feature.business_card_fragment.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -30,7 +30,7 @@ class BusinessCardFragment : Fragment() {
 
     private fun handleNavigation() {
         findNavController().navigate(
-            BusinessCardFragmentDirections.actionBusinessCardFragmentToAddBusinessCardFragment()
+            com.example.businesscard.feature.business_card_fragment.BusinessCardFragmentDirections.actionBusinessCardFragmentToAddBusinessCardFragment()
         )
     }
 

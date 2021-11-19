@@ -2,13 +2,13 @@ package com.example.businesscard.common.extensions
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
-import com.example.businesscard.common.utils.ColorsEnum
-import com.example.businesscard.feature.ColorPickerDialogFragment
+import com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker.ColorPickerDialogFragment
+import com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker.ColorsEnum
 
 private const val COLOR = "Color"
 
 fun Activity.showColorPickerDialog(
-    selectedColorAction: (Int) -> Unit = {}
+    selectedColorAction: (ColorsEnum) -> Unit = {}
 ) {
     val supportFragmentManager = (this as AppCompatActivity).supportFragmentManager
     val colorPicker = ColorPickerDialogFragment(
