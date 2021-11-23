@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.add_business_card_fragment.presentation.AddBusinessCardFragment">
+    tools:context=".feature.add_business_card.presentation.AddBusinessCardFragment">
 
 
     <androidx.appcompat.widget.AppCompatImageButton

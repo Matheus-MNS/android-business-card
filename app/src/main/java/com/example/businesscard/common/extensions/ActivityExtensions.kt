@@ -2,8 +2,8 @@ package com.example.businesscard.common.extensions
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
-import com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker.ColorPickerDialogFragment
-import com.example.businesscard.feature.add_business_card_fragment.presentation.color_picker.ColorsEnum
+import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorPickerDialogFragment
+import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
 
 private const val COLOR = "Color"
 
