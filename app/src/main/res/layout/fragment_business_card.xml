@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lotion"
-    tools:context=".feature.business_card_fragment.presentation.BusinessCardFragment">
+    tools:context=".feature.business_card_list.presentation.BusinessCardFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
