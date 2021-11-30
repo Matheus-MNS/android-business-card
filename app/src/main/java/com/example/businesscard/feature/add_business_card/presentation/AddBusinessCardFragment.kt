@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.example.businesscard.common.extensions.showColorPickerDialog
 import com.example.businesscard.databinding.FragmentAddBusinessCardBinding
 import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
@@ -54,6 +56,7 @@ class AddBusinessCardFragment : Fragment() {
                 cardBackground = cardColor
             )
         }
+        
     }
 
     private fun showColorPicker() {
