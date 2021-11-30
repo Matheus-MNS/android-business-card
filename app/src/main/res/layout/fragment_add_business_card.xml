@@ -8,7 +8,7 @@
 
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/close"
+        android:id="@+id/closeButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/save"
+        android:id="@+id/saveCardButton"
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -36,7 +36,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/close" />
+        app:layout_constraintTop_toBottomOf="@id/closeButton" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameTil"
@@ -112,7 +112,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <View
-        android:id="@+id/cardBackground"
+        android:id="@+id/cardBackgroundField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="52dp"
@@ -129,8 +129,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/card_background_label"
-        app:layout_constraintBottom_toBottomOf="@id/cardBackground"
-        app:layout_constraintStart_toStartOf="@id/cardBackground"
-        app:layout_constraintTop_toTopOf="@id/cardBackground" />
+        app:layout_constraintBottom_toBottomOf="@id/cardBackgroundField"
+        app:layout_constraintStart_toStartOf="@id/cardBackgroundField"
+        app:layout_constraintTop_toTopOf="@id/cardBackgroundField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

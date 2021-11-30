@@ -2,25 +2,47 @@ package com.example.businesscard.feature.add_business_card.domain
 
 import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 
-class AddBusinessCardUseCase(private val addBusinessCardRepository: AddBusinessCardRepository) {
+class AddBusinessCardUseCase(private val repository: AddBusinessCardRepository) {
 
-    operator fun invoke(businessCardModel: BusinessCardModel) = flow {
-        var name: String
-        var company: String
-        var phone: String
-        var emial: String
-        var cardBackground: ColorsEnum
+    operator fun invoke(
+        name: String?,
+        company: String?,
+        phone: String?,
+        email: String?,
+        cardBackground: ColorsEnum
+    ): Flow<Unit> =
+        if (name.isNullOrBlank() ||
+            company.isNullOrBlank() ||
+            phone.isNullOrBlank() ||
+            email.isNullOrBlank()
+        ) {
+            handleException(name, company, phone, email)
 
-        emit(
-            addBusinessCardRepository.insertBusinessCard(
-                (businessCardModel)
+        } else {
+            repository.insertBusinessCard(
+                BusinessCardModel(
+                    name = name,
+                    company = company,
+                    phone = phone,
+                    email = email,
+                    cardBackground = cardBackground
+                )
             )
-        )
+        }
 
-    }.flowOn(Dispatchers.IO)
-
+    private fun handleException(name: String?, company: String?, phone: String?, email: String?) =
+        flow {
+            emit(
+                when {
+                    name.isNullOrBlank() -> throw Exception()
+                    company.isNullOrBlank() -> throw Exception()
+                    phone.isNullOrBlank() -> throw Exception()
+                    email.isNullOrBlank() -> throw Exception()
+                    else -> Unit
+                }
+            )
+        }
 }
