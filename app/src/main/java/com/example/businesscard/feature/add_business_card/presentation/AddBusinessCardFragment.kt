@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.businesscard.common.extensions.showColorPickerDialog
 import com.example.businesscard.databinding.FragmentAddBusinessCardBinding
@@ -33,6 +34,7 @@ class AddBusinessCardFragment : Fragment() {
 
         binding.cardBackgroundField.setBackgroundResource(cardColor.color)
         handleClickListener()
+        handleObserver()
     }
 
     private fun handleClickListener() {
@@ -42,21 +44,33 @@ class AddBusinessCardFragment : Fragment() {
             }
             saveCardButton.setOnClickListener {
                 saveBusinessCard()
+                clearErrorField()
             }
+            closeButton.setOnClickListener {
+                findNavController().popBackStack()
+            }
+        }
+    }
+
+    private fun clearErrorField() {
+        with(binding) {
+            nameTil.isErrorEnabled = false
+            companyTil.isErrorEnabled = false
+            phoneTil.isErrorEnabled = false
+            emailTil.isErrorEnabled = false
         }
     }
 
     private fun saveBusinessCard() {
         with(binding) {
             viewModel.saveBusinessCard(
-                name = editName.text.toString(),
-                company = editEnterprise.text.toString(),
-                phone = editPhone.text.toString(),
-                email = editEmail.text.toString(),
+                name = nameEditText.text.toString(),
+                company = companyEditText.text.toString(),
+                phone = phoneEditText.text.toString(),
+                email = emailEditText.text.toString(),
                 cardBackground = cardColor
             )
         }
-        
     }
 
     private fun showColorPicker() {
@@ -64,9 +78,42 @@ class AddBusinessCardFragment : Fragment() {
             selectedColorAction = {
                 cardColor = it
                 binding.cardBackgroundField.setBackgroundResource(it.color)
-                binding.hintBackground.isVisible = false
+                binding.hintBackgroundTextView.isVisible = false
             }
         )
+    }
+
+    private fun handleObserver() {
+        viewModel.cardSuccessLiveData.observe(
+            viewLifecycleOwner, Observer(
+                ::handleSuccess
+            )
+        )
+        viewModel.nameErrorMessageLiveData.observe(viewLifecycleOwner, {
+            binding.nameTil.error = it
+        })
+
+        viewModel.companyErrorMessageLiveData.observe(viewLifecycleOwner, {
+            binding.companyTil.error = it
+        })
+
+        viewModel.phoneErrorMessageLiveData.observe(viewLifecycleOwner, {
+            binding.phoneTil.error = it
+        })
+
+        viewModel.emailErrorMessageLiveData.observe(viewLifecycleOwner, {
+            binding.emailTil.error = it
+        })
+    }
+
+    private fun handleSuccess(isSuccess: Boolean) {
+        if (isSuccess) {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun handleError(errorMessage: String) {
+
     }
 }
 

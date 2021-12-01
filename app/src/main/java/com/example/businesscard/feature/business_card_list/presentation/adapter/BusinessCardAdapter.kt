@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.businesscard.common.data.model.BusinessCardModel
+import com.example.businesscard.common.extensions.setBackgroundTint
 import com.example.businesscard.databinding.ItemBusinessCardBinding
 
 class BusinessCardAdapter :
@@ -34,7 +35,7 @@ class BusinessCardAdapter :
                 company.text = item.company
                 phone.text = item.phone
                 email.text = item.email
-                businessCard.setBackgroundColor(item.cardBackground.color)
+                businessCard.setBackgroundTint(item.cardBackground.color)
             }
         }
     }

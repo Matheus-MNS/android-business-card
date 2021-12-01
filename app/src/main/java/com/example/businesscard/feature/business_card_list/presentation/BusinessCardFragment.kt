@@ -16,7 +16,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class BusinessCardFragment : Fragment() {
 
     private val binding by lazy { FragmentBusinessCardBinding.inflate(layoutInflater) }
-    private val adapter by lazy { BusinessCardAdapter() }
     private val viewModel: BusinessCardListViewModel by viewModel()
 
     override fun onCreateView(
@@ -52,11 +51,8 @@ class BusinessCardFragment : Fragment() {
     }
 
     private fun handleRecyclerView(list: List<BusinessCardModel>) {
-
+        val adapter = BusinessCardAdapter()
         binding.businessCardRecyclerView.adapter = adapter
         adapter.submitList(list)
-
     }
-
-
 }
