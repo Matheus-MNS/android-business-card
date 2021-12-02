@@ -8,7 +8,7 @@
 
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/close"
+        android:id="@+id/closeButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/save"
+        android:id="@+id/saveCardButton"
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -36,7 +36,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/close" />
+        app:layout_constraintTop_toBottomOf="@id/closeButton" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameTil"
@@ -50,14 +50,14 @@
         app:layout_constraintTop_toBottomOf="@id/title">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editName"
+            android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/enterpriseTil"
+        android:id="@+id/companyTil"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@id/nameTil">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editEnterprise"
+            android:id="@+id/companyEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
@@ -84,10 +84,10 @@
         android:hint="@string/label_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterpriseTil">
+        app:layout_constraintTop_toBottomOf="@id/companyTil">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editPhone"
+            android:id="@+id/phoneEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone" />
@@ -105,14 +105,14 @@
         app:layout_constraintTop_toBottomOf="@id/phoneTil">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editEmail"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <View
-        android:id="@+id/cardBackground"
+        android:id="@+id/cardBackgroundField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="52dp"
@@ -124,13 +124,13 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/hintBackground"
+        android:id="@+id/hintBackgroundTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/card_background_label"
-        app:layout_constraintBottom_toBottomOf="@id/cardBackground"
-        app:layout_constraintStart_toStartOf="@id/cardBackground"
-        app:layout_constraintTop_toTopOf="@id/cardBackground" />
+        app:layout_constraintBottom_toBottomOf="@id/cardBackgroundField"
+        app:layout_constraintStart_toStartOf="@id/cardBackgroundField"
+        app:layout_constraintTop_toTopOf="@id/cardBackgroundField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

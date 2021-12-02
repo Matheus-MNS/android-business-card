@@ -1,0 +1,79 @@
+package com.example.businesscard.feature.add_business_card.presentation
+
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.businesscard.common.domain.EmptyCompanyException
+import com.example.businesscard.common.domain.EmptyEmailException
+import com.example.businesscard.common.domain.EmptyNameException
+import com.example.businesscard.common.domain.EmptyPhoneException
+import com.example.businesscard.feature.add_business_card.domain.AddBusinessCardUseCase
+import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
+
+class AddBusinessCardViewModel(private val addBusinessCardUseCase: AddBusinessCardUseCase) :
+    ViewModel() {
+
+    val nameErrorMessageLiveData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val companyErrorMessageLiveData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val phoneErrorMessageLiveData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val emailErrorMessageLiveData: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val cardSuccessLiveData: MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
+
+    fun saveBusinessCard(
+        name: String?,
+        company: String?,
+        phone: String?,
+        email: String?,
+        cardBackground: ColorsEnum
+
+    ) {
+        viewModelScope.launch {
+            addBusinessCardUseCase(
+                name,
+                company,
+                phone,
+                email,
+                cardBackground
+            )
+                .flowOn(Dispatchers.IO)
+                .catch {
+                    handleError(it)
+                }
+                .collect {
+                    cardSuccessLiveData.value = true
+                }
+        }
+    }
+
+    private fun handleError(error: Throwable) {
+        when (error) {
+            is EmptyNameException ->
+                nameErrorMessageLiveData.value = error.message
+            is EmptyCompanyException ->
+                companyErrorMessageLiveData.value = error.message
+            is EmptyPhoneException ->
+                phoneErrorMessageLiveData.value = error.message
+            is EmptyEmailException ->
+                emailErrorMessageLiveData.value = error.message
+        }
+    }
+}
