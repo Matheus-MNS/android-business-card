@@ -14,7 +14,7 @@ enum class ColorsEnum(val color: Int) {
     LIGHT_GREEN(R.color.light_green),
     BROWN(R.color.brown),
     GRAY(R.color.gray),
-    DEFAULT (R.color.purple_500);
+    DEFAULT(R.color.maya_blue);
 
     companion object {
 
