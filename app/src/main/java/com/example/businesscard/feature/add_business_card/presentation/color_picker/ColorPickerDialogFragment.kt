@@ -27,9 +27,10 @@ class ColorPickerDialogFragment(private val params: Params) : DialogFragment() {
     }
 
     private fun handleColorSelected() {
-        val pickerAdapter = ColorPickerAdapter(ColorsEnum.DUMBLIST)
+        val pickerAdapter = ColorPickerAdapter()
+        pickerAdapter.submitList(ColorsEnum.DUMBLIST)
         binding.colorPickerRecycler.adapter = pickerAdapter
-        pickerAdapter.onItemClick = {
+        pickerAdapter.colorClickListener = {
             params.selectedColorAction.invoke(it)
             dismiss()
         }

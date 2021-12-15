@@ -2,8 +2,6 @@ package com.example.businesscard.feature.business_card_list.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.businesscard.common.data.model.BusinessCardModel
