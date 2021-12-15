@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.extensions.setBackgroundTint
+import com.example.businesscard.common.utils.DefaultDiffCallback
 import com.example.businesscard.databinding.ItemBusinessCardBinding
 
 class BusinessCardAdapter :
-    ListAdapter<BusinessCardModel, BusinessCardAdapter.ViewHolder>(DiffCallback()) {
+    ListAdapter<BusinessCardModel, BusinessCardAdapter.ViewHolder>(DefaultDiffCallback<BusinessCardModel>()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -23,7 +24,6 @@ class BusinessCardAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-
 
     inner class ViewHolder(
         private val binding: ItemBusinessCardBinding
@@ -40,12 +40,3 @@ class BusinessCardAdapter :
         }
     }
 }
-
-class DiffCallback : DiffUtil.ItemCallback<BusinessCardModel>() {
-    override fun areItemsTheSame(oldItem: BusinessCardModel, newItem: BusinessCardModel) =
-        oldItem == newItem
-
-    override fun areContentsTheSame(oldItem: BusinessCardModel, newItem: BusinessCardModel) =
-        oldItem.id == newItem.id
-}
-
