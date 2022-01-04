@@ -16,7 +16,6 @@ class BusinessCardListViewModel(private val businessCardListUseCase: BusinessCar
 
     val businessCardList: MutableLiveData<List<BusinessCardModel>> by lazy {
         MutableLiveData<List<BusinessCardModel>>()
-
     }
 
     init {
@@ -28,12 +27,10 @@ class BusinessCardListViewModel(private val businessCardListUseCase: BusinessCar
             businessCardListUseCase()
                 .flowOn(Dispatchers.IO)
                 .catch {
-
                 }
                 .collect {
                     businessCardList.value = it
                 }
-
         }
     }
 }

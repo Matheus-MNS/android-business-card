@@ -2,14 +2,17 @@ package com.example.businesscard.feature.add_business_card.presentation.color_pi
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.businesscard.common.utils.AdapterItemWithParameterClickListener
+import com.example.businesscard.common.utils.DefaultDiffCallback
 import com.example.businesscard.databinding.ItemColorBinding
 import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
 
-class ColorPickerAdapter(private val list: List<ColorsEnum>) :
-    RecyclerView.Adapter<ColorPickerAdapter.ViewHolder>() {
+class ColorPickerAdapter :
+    ListAdapter<ColorsEnum, ColorPickerAdapter.ViewHolder>(DefaultDiffCallback<ColorsEnum>()) {
 
-    var onItemClick: ((ColorsEnum) -> Unit)? = null
+    var colorClickListener: AdapterItemWithParameterClickListener<ColorsEnum> = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemColorBinding.inflate(
@@ -20,14 +23,9 @@ class ColorPickerAdapter(private val list: List<ColorsEnum>) :
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = list.size
-
-
-    override fun onBindViewHolder(holder: ColorPickerAdapter.ViewHolder, position: Int) {
-        holder.bind(list[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
-
-    //var colorClickListener: AdapterItemWithParameterClickListener<Int>
 
     inner class ViewHolder(private val binding: ItemColorBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -36,7 +34,7 @@ class ColorPickerAdapter(private val list: List<ColorsEnum>) :
             with(binding) {
                 pickerColor.setBackgroundResource(enum.color)
                 itemView.setOnClickListener {
-                    onItemClick?.invoke(enum)
+                    colorClickListener(enum)
                 }
             }
         }
