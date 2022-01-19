@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18055555555555555" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/circle_button.xml" value="0.22" />
+        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/custom_button.xml" value="0.35" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/ic_add.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/ic_close.xml" value="0.19814814814814816" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18055555555555555" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/fragment_add_business_card.xml" value="0.33" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/fragment_business_card.xml" value="0.25" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/fragment_color_picker_dialog.xml" value="0.16" />
+        <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/fragment_delete_business_card_dialog.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/item_business_card.xml" value="0.33" />
         <entry key="..\:/Users/mathe/Documents/Repositories/android-business-card/app/src/main/res/layout/item_color.xml" value="0.1" />
       </map>
