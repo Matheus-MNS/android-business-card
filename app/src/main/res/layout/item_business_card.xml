@@ -11,8 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:checkable="true"
-        android:clickable="true"
         android:elevation="8dp"
         android:focusable="true"
         app:cardCornerRadius="16dp"

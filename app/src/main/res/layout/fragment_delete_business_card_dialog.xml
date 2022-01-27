@@ -5,8 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="32dp"
-    android:background="@color/alpine_white"
-    tools:context=".feature.delete_business_card.DeleteBusinessCardDialogFragment">
+    android:background="@drawable/custom_dialog"
+    tools:context=".feature.business_card_list.presentation.dialog.DeleteBusinessCardDialogFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/confirmText"

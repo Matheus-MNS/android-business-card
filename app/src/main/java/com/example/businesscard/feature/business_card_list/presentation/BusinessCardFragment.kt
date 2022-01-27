@@ -59,14 +59,11 @@ class BusinessCardFragment : Fragment() {
         adapter.businessCardClickListener = {
             showDeleteDialog(
                 positiveAction = {
-                    it.let {
-                        Toast.makeText(context, "positive", Toast.LENGTH_LONG).show()
-                    }
+                    viewModel.deleteBusinessCard(it)
+
                 },
                 negativeAction = {
-                    it.let {
-                        Toast.makeText(context, "negative", Toast.LENGTH_LONG).show()
-                    }
+
                 }
             )
         }

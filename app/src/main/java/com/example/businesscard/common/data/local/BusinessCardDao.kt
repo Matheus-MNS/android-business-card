@@ -14,7 +14,5 @@ interface BusinessCardDao {
     suspend fun insertBusinessCard(businessCard: BusinessCardModel)
 
     @Delete
-    fun deleteBusinessCard(businessCard: BusinessCardModel)
-
-
+    fun deleteBusinessCard(businessCardModel: BusinessCardModel)
 }

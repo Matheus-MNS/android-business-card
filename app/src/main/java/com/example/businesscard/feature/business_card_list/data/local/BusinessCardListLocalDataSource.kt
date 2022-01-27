@@ -10,4 +10,10 @@ class BusinessCardListLocalDataSource(private val businessCardDao: BusinessCardD
     fun getBusinessCardList(): Flow<List<BusinessCardModel>> =
         businessCardDao.getBusinessCardList()
 
+    fun deleteBusinessCard(businessCardModel: BusinessCardModel) : Flow<Unit> = flow {
+        emit(
+            businessCardDao.deleteBusinessCard(businessCardModel)
+        )
+    }
+
 }

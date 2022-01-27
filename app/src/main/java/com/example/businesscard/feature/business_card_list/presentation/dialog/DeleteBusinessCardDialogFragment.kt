@@ -1,12 +1,11 @@
-package com.example.businesscard.feature.delete_business_card
+package com.example.businesscard.feature.business_card_list.presentation.dialog
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.businesscard.R
+import com.example.businesscard.common.extensions.setWindowFeatures
 import com.example.businesscard.databinding.FragmentDeleteBusinessCardDialogBinding
 
 class DeleteBusinessCardDialogFragment(private val params: Params) : DialogFragment() {
@@ -17,6 +16,7 @@ class DeleteBusinessCardDialogFragment(private val params: Params) : DialogFragm
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setWindowFeatures()
         return binding.root
     }
 

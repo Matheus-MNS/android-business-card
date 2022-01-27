@@ -4,15 +4,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.businesscard.common.data.model.BusinessCardModel
-import com.example.businesscard.feature.business_card_list.domain.BusinessCardListUseCase
+import com.example.businesscard.feature.business_card_list.domain.GetBusinessCardListUseCase
+import com.example.businesscard.feature.business_card_list.domain.DeleteBusinessCardUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class BusinessCardListViewModel(private val businessCardListUseCase: BusinessCardListUseCase) :
-    ViewModel() {
+class BusinessCardListViewModel(
+    private val getBusinessCardListUseCase: GetBusinessCardListUseCase,
+    private val deleteBusinessCardUseCase: DeleteBusinessCardUseCase
+) : ViewModel() {
 
     val businessCardList: MutableLiveData<List<BusinessCardModel>> by lazy {
         MutableLiveData<List<BusinessCardModel>>()
@@ -24,7 +27,7 @@ class BusinessCardListViewModel(private val businessCardListUseCase: BusinessCar
 
     private fun getBusinessCard() {
         viewModelScope.launch {
-            businessCardListUseCase()
+            getBusinessCardListUseCase()
                 .flowOn(Dispatchers.IO)
                 .catch {
                 }
@@ -32,5 +35,19 @@ class BusinessCardListViewModel(private val businessCardListUseCase: BusinessCar
                     businessCardList.value = it
                 }
         }
+    }
+
+    fun deleteBusinessCard(businessCard: BusinessCardModel) {
+        viewModelScope.launch {
+            deleteBusinessCardUseCase(businessCard)
+                .flowOn(Dispatchers.IO)
+                .catch {
+
+                }
+                .collect {
+
+                }
+        }
+
     }
 }
