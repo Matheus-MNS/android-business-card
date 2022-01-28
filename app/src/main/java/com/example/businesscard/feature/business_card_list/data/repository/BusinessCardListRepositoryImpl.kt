@@ -11,4 +11,8 @@ class BusinessCardListRepositoryImpl(
 
     override fun getBusinessCardList(): Flow<List<BusinessCardModel>> =
         businessCardLocalDataSource.getBusinessCardList()
+
+    override fun deleteBusinessCard(businessCardModel: BusinessCardModel): Flow<Unit> =
+        businessCardLocalDataSource.deleteBusinessCard(businessCardModel)
+
 }

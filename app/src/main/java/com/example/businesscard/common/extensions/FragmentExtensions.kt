@@ -10,3 +10,9 @@ fun Fragment.showColorPickerDialog(
     activity?.showColorPickerDialog(selectedColorAction)
 }
 
+fun Fragment.showDeleteDialog(
+    positiveAction: (() -> Unit),
+    negativeAction: (() -> Unit)? = null
+) {
+    activity?.showDeleteDialog(positiveAction, negativeAction)
+}

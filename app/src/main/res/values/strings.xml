@@ -11,4 +11,8 @@
     <string name="label_background">Cor de Fundo</string>
     <string name="title">Escolha uma cor:</string>
     <string name="card_background_label">Cor de Fundo</string>
+    <string name="confirm_delete">Sim</string>
+    <string name="negative_delete">Não</string>
+    <string name="confirm_delete_text">Tem certeza que deseja deletar o cartão?</string>
+
 </resources>
