@@ -1,11 +1,11 @@
-package com.example.businesscard.feature.add_business_card.presentation.color_picker
+package com.example.businesscard.feature.business_card_registration.presentation.color_picker
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.businesscard.feature.add_business_card.presentation.color_picker.adapter.ColorPickerAdapter
+import com.example.businesscard.feature.business_card_registration.presentation.color_picker.adapter.ColorPickerAdapter
 import com.example.businesscard.common.extensions.setWindowFeatures
 import com.example.businesscard.databinding.FragmentColorPickerDialogBinding
 

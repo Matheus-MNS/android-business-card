@@ -2,7 +2,7 @@ package com.example.businesscard.common.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
+import com.example.businesscard.feature.business_card_registration.presentation.color_picker.ColorsEnum
 
 @Entity
 data class BusinessCardModel(

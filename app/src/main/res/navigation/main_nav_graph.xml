@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/addBusinessCardFragment"
-        android:name="com.example.businesscard.feature.add_business_card.presentation.AddBusinessCardFragment"
+        android:name="com.example.businesscard.feature.business_card_registration.presentation.BusinessCardRegistrationFragment"
         android:label="fragment_add_business_card"
         tools:layout="@layout/fragment_add_business_card" />
 </navigation>
