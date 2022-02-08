@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.extensions.showColorPickerDialog
 import com.example.businesscard.databinding.FragmentAddBusinessCardBinding
 import com.example.businesscard.feature.business_card_registration.presentation.color_picker.ColorsEnum
@@ -20,7 +21,7 @@ class BusinessCardRegistrationFragment : Fragment() {
     private val binding by lazy { FragmentAddBusinessCardBinding.inflate(layoutInflater) }
     var cardColor = ColorsEnum.DEFAULT
     val args: BusinessCardRegistrationFragmentArgs by navArgs()
-    private val viewModel: BusinessCardRegistrationViewModel by viewModel{
+    private val viewModel: BusinessCardRegistrationViewModel by viewModel {
         parametersOf(args)
     }
 
@@ -48,7 +49,7 @@ class BusinessCardRegistrationFragment : Fragment() {
                 showColorPicker()
             }
             saveCardButton.setOnClickListener {
-                saveBusinessCard()
+                registerBusinessCard()
                 clearErrorField()
             }
             closeButton.setOnClickListener {
@@ -66,10 +67,9 @@ class BusinessCardRegistrationFragment : Fragment() {
         }
     }
 
-    private fun saveBusinessCard() {
+    private fun registerBusinessCard() {
         with(binding) {
             viewModel.registerBusinessCard(
-                isUpdate = false,
                 name = nameEditText.text.toString(),
                 company = companyEditText.text.toString(),
                 phone = phoneEditText.text.toString(),
@@ -110,6 +110,23 @@ class BusinessCardRegistrationFragment : Fragment() {
         viewModel.emailErrorMessageLiveData.observe(viewLifecycleOwner, {
             binding.emailTil.error = it
         })
+
+        viewModel.businessCardLiveData.observe(viewLifecycleOwner, {
+            fillBusinessCardForms(it)
+        })
+    }
+
+    private fun fillBusinessCardForms(businessCardModel: BusinessCardModel) {
+
+        with(binding) {
+            with(businessCardModel) {
+                nameEditText.setText(name)
+                companyEditText.setText(company)
+                emailEditText.setText(email)
+                phoneEditText.setText(phone)
+                cardBackgroundField.setBackgroundResource(cardBackground.color)
+            }
+        }
     }
 
     private fun handleSuccess(isSuccess: Boolean) {

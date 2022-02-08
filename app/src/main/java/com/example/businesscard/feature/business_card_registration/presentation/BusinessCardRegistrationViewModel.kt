@@ -3,6 +3,7 @@ package com.example.businesscard.feature.business_card_registration.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.domain.EmptyCompanyException
 import com.example.businesscard.common.domain.EmptyEmailException
 import com.example.businesscard.common.domain.EmptyNameException
@@ -40,13 +41,18 @@ class BusinessCardRegistrationViewModel(
         MutableLiveData<Boolean>()
     }
 
+    val businessCardLiveData: MutableLiveData<BusinessCardModel> by lazy {
+        MutableLiveData<BusinessCardModel>()
+    }
+
     init {
-        args
+        if (args.businessCard != null) {
+            businessCardLiveData.value = args.businessCard
+        }
     }
 
 
     fun registerBusinessCard(
-        isUpdate: Boolean,
         name: String?,
         company: String?,
         phone: String?,
@@ -56,7 +62,7 @@ class BusinessCardRegistrationViewModel(
     ) {
         viewModelScope.launch {
             businessCardRegistrationCardUseCase(
-                isUpdate,
+                args.businessCard?.id,
                 name,
                 company,
                 phone,

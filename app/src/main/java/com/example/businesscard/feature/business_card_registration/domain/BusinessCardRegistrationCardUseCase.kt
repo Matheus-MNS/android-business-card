@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flow
 class BusinessCardRegistrationCardUseCase(private val repository: BusinessCardRegistrationCardRepository) {
 
     operator fun invoke(
-        isUpdate: Boolean,
+        id: Int?,
         name: String?,
         company: String?,
         phone: String?,
@@ -26,7 +26,7 @@ class BusinessCardRegistrationCardUseCase(private val repository: BusinessCardRe
         ) {
             handleException(name, company, phone, email)
         } else {
-            updateVerification(isUpdate, name, company, phone, email, cardBackground)
+            updateVerification(id, name, company, phone, email, cardBackground)
         }
 
     private fun handleException(name: String?, company: String?, phone: String?, email: String?) =
@@ -43,15 +43,16 @@ class BusinessCardRegistrationCardUseCase(private val repository: BusinessCardRe
         }
 
     private fun updateVerification(
-        isUpdate: Boolean,
+        id: Int?,
         name: String,
         company: String,
         phone: String,
         email: String,
         cardBackground: ColorsEnum
-    ) = if (isUpdate) {
+    ) = if (id != null) {
         repository.updateBusinessCard(
             BusinessCardModel(
+                id = id,
                 name = name,
                 company = company,
                 phone = phone,
