@@ -8,16 +8,22 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.businesscard.common.extensions.showColorPickerDialog
 import com.example.businesscard.databinding.FragmentAddBusinessCardBinding
 import com.example.businesscard.feature.business_card_registration.presentation.color_picker.ColorsEnum
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class BusinessCardRegistrationFragment : Fragment() {
 
     private val binding by lazy { FragmentAddBusinessCardBinding.inflate(layoutInflater) }
     var cardColor = ColorsEnum.DEFAULT
-    private val viewModel: BusinessCardRegistrationViewModel by viewModel()
+    val args: BusinessCardRegistrationFragmentArgs by navArgs()
+    private val viewModel: BusinessCardRegistrationViewModel by viewModel{
+        parametersOf(args)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,7 +68,8 @@ class BusinessCardRegistrationFragment : Fragment() {
 
     private fun saveBusinessCard() {
         with(binding) {
-            viewModel.saveBusinessCard(
+            viewModel.registerBusinessCard(
+                isUpdate = false,
                 name = nameEditText.text.toString(),
                 company = companyEditText.text.toString(),
                 phone = phoneEditText.text.toString(),
@@ -114,5 +121,6 @@ class BusinessCardRegistrationFragment : Fragment() {
     private fun handleError(errorMessage: String) {
 
     }
+
 }
 

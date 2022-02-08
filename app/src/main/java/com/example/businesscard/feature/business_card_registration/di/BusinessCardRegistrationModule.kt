@@ -4,6 +4,7 @@ import com.example.businesscard.feature.business_card_registration.data.local.Bu
 import com.example.businesscard.feature.business_card_registration.data.repository.BusinessCardRegistrationRepositoryImpl
 import com.example.businesscard.feature.business_card_registration.domain.BusinessCardRegistrationCardRepository
 import com.example.businesscard.feature.business_card_registration.domain.BusinessCardRegistrationCardUseCase
+import com.example.businesscard.feature.business_card_registration.presentation.BusinessCardRegistrationFragmentArgs
 import com.example.businesscard.feature.business_card_registration.presentation.BusinessCardRegistrationViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -18,11 +19,12 @@ val addBusinessCardModule = module {
         )
     }
 
-    viewModel {
+    viewModel { (args: BusinessCardRegistrationFragmentArgs) ->
         BusinessCardRegistrationViewModel(
-            addBusinessCardUseCase = BusinessCardRegistrationCardUseCase(
+            businessCardRegistrationCardUseCase = BusinessCardRegistrationCardUseCase(
                 repository = get()
-            )
+            ),
+            args = args
         )
     }
 }

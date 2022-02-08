@@ -16,7 +16,8 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class BusinessCardRegistrationViewModel(
-    private val addBusinessCardUseCase: BusinessCardRegistrationCardUseCase,
+    private val businessCardRegistrationCardUseCase: BusinessCardRegistrationCardUseCase,
+    private val args: BusinessCardRegistrationFragmentArgs
 ) : ViewModel() {
 
     val nameErrorMessageLiveData: MutableLiveData<String> by lazy {
@@ -39,7 +40,13 @@ class BusinessCardRegistrationViewModel(
         MutableLiveData<Boolean>()
     }
 
-    fun saveBusinessCard(
+    init {
+        args
+    }
+
+
+    fun registerBusinessCard(
+        isUpdate: Boolean,
         name: String?,
         company: String?,
         phone: String?,
@@ -48,7 +55,8 @@ class BusinessCardRegistrationViewModel(
 
     ) {
         viewModelScope.launch {
-            addBusinessCardUseCase(
+            businessCardRegistrationCardUseCase(
+                isUpdate,
                 name,
                 company,
                 phone,
@@ -77,7 +85,5 @@ class BusinessCardRegistrationViewModel(
                 emailErrorMessageLiveData.value = error.message
         }
     }
-
-
 
 }
