@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.businesscard.common.data.model.BusinessCardModel
+import com.example.businesscard.common.extensions.showDeleteDialog
 import com.example.businesscard.databinding.FragmentBusinessCardBinding
 import com.example.businesscard.feature.business_card_list.presentation.adapter.BusinessCardAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -55,18 +56,20 @@ class BusinessCardFragment : Fragment() {
         val adapter = BusinessCardAdapter()
         binding.businessCardRecyclerView.adapter = adapter
         adapter.submitList(list)
-        adapter.businessCardClickListener = {
-//            showDeleteDialog(
-//                positiveAction = {
-//                    viewModel.deleteBusinessCard(it)
-//
-//                },
-//                negativeAction = {
-//
-//                }
-//            )
+        adapter.onItemClick = {
 
             navigateToBusinessCardRegistration(it)
+        }
+
+        adapter.onItemLongClick = {
+            showDeleteDialog(
+                positiveAction = {
+                    viewModel.deleteBusinessCard(it)
+                },
+                negativeAction = {
+
+                }
+            )
         }
     }
 }

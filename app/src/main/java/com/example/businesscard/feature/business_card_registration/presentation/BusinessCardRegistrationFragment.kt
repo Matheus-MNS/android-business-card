@@ -125,6 +125,7 @@ class BusinessCardRegistrationFragment : Fragment() {
                 emailEditText.setText(email)
                 phoneEditText.setText(phone)
                 cardBackgroundField.setBackgroundResource(cardBackground.color)
+                cardColor = cardBackground
             }
         }
     }
