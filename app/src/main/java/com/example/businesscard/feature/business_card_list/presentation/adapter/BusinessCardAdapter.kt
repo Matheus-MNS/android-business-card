@@ -42,9 +42,9 @@ class BusinessCardAdapter :
                     onItemClick?.invoke(item)
                 }
 
-                itemView.setOnClickListener {
+                itemView.setOnLongClickListener {
                     onItemLongClick?.invoke(item)
-                    return@setOnClickListener
+                    return@setOnLongClickListener true
                 }
             }
         }

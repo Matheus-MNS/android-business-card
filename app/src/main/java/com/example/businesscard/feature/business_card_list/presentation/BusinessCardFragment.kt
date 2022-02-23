@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.businesscard.common.data.model.BusinessCardModel
@@ -56,20 +57,23 @@ class BusinessCardFragment : Fragment() {
         val adapter = BusinessCardAdapter()
         binding.businessCardRecyclerView.adapter = adapter
         adapter.submitList(list)
-        adapter.onItemClick = {
+        with(adapter) {
+            onItemClick = {
 
-            navigateToBusinessCardRegistration(it)
+                navigateToBusinessCardRegistration(it)
+            }
+            onItemLongClick = {
+                showDeleteDialog(
+                    positiveAction = {
+                        viewModel.deleteBusinessCard(it)
+                        Toast.makeText(context, "Cartão excluido", Toast.LENGTH_LONG).show()
+                    },
+                    negativeAction = {
+
+                    }
+                )
+            }
         }
 
-        adapter.onItemLongClick = {
-            showDeleteDialog(
-                positiveAction = {
-                    viewModel.deleteBusinessCard(it)
-                },
-                negativeAction = {
-
-                }
-            )
-        }
     }
 }
