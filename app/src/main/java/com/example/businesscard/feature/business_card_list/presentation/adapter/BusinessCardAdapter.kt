@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.extensions.setBackgroundTint
-import com.example.businesscard.common.utils.AdapterItemWithParameterClickListener
 import com.example.businesscard.common.utils.DefaultDiffCallback
 import com.example.businesscard.databinding.ItemBusinessCardBinding
 
 class BusinessCardAdapter :
     ListAdapter<BusinessCardModel, BusinessCardAdapter.ViewHolder>(DefaultDiffCallback<BusinessCardModel>()) {
 
-    var businessCardClickListener: AdapterItemWithParameterClickListener<BusinessCardModel> = {}
+    var onItemClick: ((BusinessCardModel) -> Unit)? = null
+    var onItemLongClick: ((BusinessCardModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -37,8 +37,14 @@ class BusinessCardAdapter :
                 phone.text = item.phone
                 email.text = item.email
                 businessCard.setBackgroundTint(item.cardBackground.color)
+
                 itemView.setOnClickListener {
-                    businessCardClickListener(item)
+                    onItemClick?.invoke(item)
+                }
+
+                itemView.setOnLongClickListener {
+                    onItemLongClick?.invoke(item)
+                    return@setOnLongClickListener true
                 }
             }
         }

@@ -15,4 +15,7 @@ interface BusinessCardDao {
 
     @Delete
     fun deleteBusinessCard(businessCardModel: BusinessCardModel)
+
+    @Update
+    fun updateBusinessCard(businessCard: BusinessCardModel)
 }

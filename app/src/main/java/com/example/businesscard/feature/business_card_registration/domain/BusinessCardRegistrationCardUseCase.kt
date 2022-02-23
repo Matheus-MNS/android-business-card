@@ -1,17 +1,18 @@
-package com.example.businesscard.feature.add_business_card.domain
+package com.example.businesscard.feature.business_card_registration.domain
 
 import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.domain.EmptyCompanyException
 import com.example.businesscard.common.domain.EmptyEmailException
 import com.example.businesscard.common.domain.EmptyNameException
 import com.example.businesscard.common.domain.EmptyPhoneException
-import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
+import com.example.businesscard.feature.business_card_registration.presentation.color_picker.ColorsEnum
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AddBusinessCardUseCase(private val repository: AddBusinessCardRepository) {
+class BusinessCardRegistrationCardUseCase(private val repository: BusinessCardRegistrationCardRepository) {
 
     operator fun invoke(
+        id: Int?,
         name: String?,
         company: String?,
         phone: String?,
@@ -24,17 +25,8 @@ class AddBusinessCardUseCase(private val repository: AddBusinessCardRepository) 
             email.isNullOrBlank()
         ) {
             handleException(name, company, phone, email)
-
         } else {
-            repository.insertBusinessCard(
-                BusinessCardModel(
-                    name = name,
-                    company = company,
-                    phone = phone,
-                    email = email,
-                    cardBackground = cardBackground
-                )
-            )
+            updateVerification(id, name, company, phone, email, cardBackground)
         }
 
     private fun handleException(name: String?, company: String?, phone: String?, email: String?) =
@@ -49,4 +41,34 @@ class AddBusinessCardUseCase(private val repository: AddBusinessCardRepository) 
                 }
             )
         }
+
+    private fun updateVerification(
+        id: Int?,
+        name: String,
+        company: String,
+        phone: String,
+        email: String,
+        cardBackground: ColorsEnum
+    ) = if (id != null) {
+        repository.updateBusinessCard(
+            BusinessCardModel(
+                id = id,
+                name = name,
+                company = company,
+                phone = phone,
+                email = email,
+                cardBackground = cardBackground
+            )
+        )
+    } else {
+        repository.insertBusinessCard(
+            BusinessCardModel(
+                name = name,
+                company = company,
+                phone = phone,
+                email = email,
+                cardBackground = cardBackground
+            )
+        )
+    }
 }

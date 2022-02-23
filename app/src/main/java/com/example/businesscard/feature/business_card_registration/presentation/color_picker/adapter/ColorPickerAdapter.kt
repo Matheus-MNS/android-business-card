@@ -1,4 +1,4 @@
-package com.example.businesscard.feature.add_business_card.presentation.color_picker.adapter
+package com.example.businesscard.feature.business_card_registration.presentation.color_picker.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.businesscard.common.utils.AdapterItemWithParameterClickListener
 import com.example.businesscard.common.utils.DefaultDiffCallback
 import com.example.businesscard.databinding.ItemColorBinding
-import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
+import com.example.businesscard.feature.business_card_registration.presentation.color_picker.ColorsEnum
 
 class ColorPickerAdapter :
     ListAdapter<ColorsEnum, ColorPickerAdapter.ViewHolder>(DefaultDiffCallback<ColorsEnum>()) {

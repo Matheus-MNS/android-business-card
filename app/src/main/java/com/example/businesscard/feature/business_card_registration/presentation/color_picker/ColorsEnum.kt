@@ -1,4 +1,4 @@
-package com.example.businesscard.feature.add_business_card.presentation.color_picker
+package com.example.businesscard.feature.business_card_registration.presentation.color_picker
 
 import com.example.businesscard.R
 

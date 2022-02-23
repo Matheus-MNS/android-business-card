@@ -2,7 +2,7 @@ package com.example.businesscard.base_app
 
 import android.app.Application
 import com.example.businesscard.common.di.commonBusinessCardModule
-import com.example.businesscard.feature.add_business_card.di.addBusinessCardModule
+import com.example.businesscard.feature.business_card_registration.di.addBusinessCardModule
 import com.example.businesscard.feature.business_card_list.di.businessCardListModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

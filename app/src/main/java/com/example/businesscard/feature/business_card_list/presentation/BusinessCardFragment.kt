@@ -20,6 +20,7 @@ class BusinessCardFragment : Fragment() {
     private val binding by lazy { FragmentBusinessCardBinding.inflate(layoutInflater) }
     private val viewModel: BusinessCardListViewModel by viewModel()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,13 +35,13 @@ class BusinessCardFragment : Fragment() {
         handleObserver()
 
         binding.addFab.setOnClickListener {
-            handleNavigation()
+            navigateToBusinessCardRegistration()
         }
     }
 
-    private fun handleNavigation() {
+    private fun navigateToBusinessCardRegistration(businessCardModel: BusinessCardModel? = null) {
         findNavController().navigate(
-            BusinessCardFragmentDirections.actionBusinessCardFragmentToAddBusinessCardFragment()
+            BusinessCardFragmentDirections.navigationToBusinessCardRegistration(businessCardModel)
         )
     }
 
@@ -56,16 +57,23 @@ class BusinessCardFragment : Fragment() {
         val adapter = BusinessCardAdapter()
         binding.businessCardRecyclerView.adapter = adapter
         adapter.submitList(list)
-        adapter.businessCardClickListener = {
-            showDeleteDialog(
-                positiveAction = {
-                    viewModel.deleteBusinessCard(it)
+        with(adapter) {
+            onItemClick = {
 
-                },
-                negativeAction = {
+                navigateToBusinessCardRegistration(it)
+            }
+            onItemLongClick = {
+                showDeleteDialog(
+                    positiveAction = {
+                        viewModel.deleteBusinessCard(it)
+                        Toast.makeText(context, "Cartão excluido", Toast.LENGTH_LONG).show()
+                    },
+                    negativeAction = {
 
-                }
-            )
+                    }
+                )
+            }
         }
+
     }
 }

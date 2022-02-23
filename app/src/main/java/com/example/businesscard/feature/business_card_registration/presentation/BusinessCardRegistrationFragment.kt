@@ -1,24 +1,30 @@
-package com.example.businesscard.feature.add_business_card.presentation
+package com.example.businesscard.feature.business_card_registration.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.extensions.showColorPickerDialog
 import com.example.businesscard.databinding.FragmentAddBusinessCardBinding
-import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
+import com.example.businesscard.feature.business_card_registration.presentation.color_picker.ColorsEnum
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
-class AddBusinessCardFragment : Fragment() {
+class BusinessCardRegistrationFragment : Fragment() {
 
     private val binding by lazy { FragmentAddBusinessCardBinding.inflate(layoutInflater) }
     var cardColor = ColorsEnum.DEFAULT
-    private val viewModel: AddBusinessCardViewModel by viewModel()
+    val args: BusinessCardRegistrationFragmentArgs by navArgs()
+    private val viewModel: BusinessCardRegistrationViewModel by viewModel {
+        parametersOf(args)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +49,7 @@ class AddBusinessCardFragment : Fragment() {
                 showColorPicker()
             }
             saveCardButton.setOnClickListener {
-                saveBusinessCard()
+                registerBusinessCard()
                 clearErrorField()
             }
             closeButton.setOnClickListener {
@@ -61,9 +67,9 @@ class AddBusinessCardFragment : Fragment() {
         }
     }
 
-    private fun saveBusinessCard() {
+    private fun registerBusinessCard() {
         with(binding) {
-            viewModel.saveBusinessCard(
+            viewModel.registerBusinessCard(
                 name = nameEditText.text.toString(),
                 company = companyEditText.text.toString(),
                 phone = phoneEditText.text.toString(),
@@ -104,6 +110,24 @@ class AddBusinessCardFragment : Fragment() {
         viewModel.emailErrorMessageLiveData.observe(viewLifecycleOwner, {
             binding.emailTil.error = it
         })
+
+        viewModel.businessCardLiveData.observe(viewLifecycleOwner, {
+            fillBusinessCardForms(it)
+        })
+    }
+
+    private fun fillBusinessCardForms(businessCardModel: BusinessCardModel) {
+
+        with(binding) {
+            with(businessCardModel) {
+                nameEditText.setText(name)
+                companyEditText.setText(company)
+                emailEditText.setText(email)
+                phoneEditText.setText(phone)
+                cardBackgroundField.setBackgroundResource(cardBackground.color)
+                cardColor = cardBackground
+            }
+        }
     }
 
     private fun handleSuccess(isSuccess: Boolean) {
@@ -115,5 +139,6 @@ class AddBusinessCardFragment : Fragment() {
     private fun handleError(errorMessage: String) {
 
     }
+
 }
 

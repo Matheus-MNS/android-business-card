@@ -1,22 +1,25 @@
-package com.example.businesscard.feature.add_business_card.presentation
+package com.example.businesscard.feature.business_card_registration.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.domain.EmptyCompanyException
 import com.example.businesscard.common.domain.EmptyEmailException
 import com.example.businesscard.common.domain.EmptyNameException
 import com.example.businesscard.common.domain.EmptyPhoneException
-import com.example.businesscard.feature.add_business_card.domain.AddBusinessCardUseCase
-import com.example.businesscard.feature.add_business_card.presentation.color_picker.ColorsEnum
+import com.example.businesscard.feature.business_card_registration.domain.BusinessCardRegistrationCardUseCase
+import com.example.businesscard.feature.business_card_registration.presentation.color_picker.ColorsEnum
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class AddBusinessCardViewModel(private val addBusinessCardUseCase: AddBusinessCardUseCase) :
-    ViewModel() {
+class BusinessCardRegistrationViewModel(
+    private val businessCardRegistrationCardUseCase: BusinessCardRegistrationCardUseCase,
+    private val args: BusinessCardRegistrationFragmentArgs
+) : ViewModel() {
 
     val nameErrorMessageLiveData: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
@@ -38,7 +41,18 @@ class AddBusinessCardViewModel(private val addBusinessCardUseCase: AddBusinessCa
         MutableLiveData<Boolean>()
     }
 
-    fun saveBusinessCard(
+    val businessCardLiveData: MutableLiveData<BusinessCardModel> by lazy {
+        MutableLiveData<BusinessCardModel>()
+    }
+
+    init {
+        if (args.businessCard != null) {
+            businessCardLiveData.value = args.businessCard
+        }
+    }
+
+
+    fun registerBusinessCard(
         name: String?,
         company: String?,
         phone: String?,
@@ -47,7 +61,8 @@ class AddBusinessCardViewModel(private val addBusinessCardUseCase: AddBusinessCa
 
     ) {
         viewModelScope.launch {
-            addBusinessCardUseCase(
+            businessCardRegistrationCardUseCase(
+                args.businessCard?.id,
                 name,
                 company,
                 phone,
@@ -76,4 +91,5 @@ class AddBusinessCardViewModel(private val addBusinessCardUseCase: AddBusinessCa
                 emailErrorMessageLiveData.value = error.message
         }
     }
+
 }

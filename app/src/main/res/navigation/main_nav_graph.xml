@@ -8,14 +8,19 @@
         android:id="@+id/businessCardFragment"
         android:name="com.example.businesscard.feature.business_card_list.presentation.BusinessCardFragment"
         android:label="fragment_business_card"
-        tools:layout="@layout/fragment_business_card" >
+        tools:layout="@layout/fragment_business_card">
         <action
-            android:id="@+id/action_businessCardFragment_to_addBusinessCardFragment"
-            app:destination="@id/addBusinessCardFragment" />
+            android:id="@+id/navigationToBusinessCardRegistration"
+            app:destination="@id/businessCardRegistrationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addBusinessCardFragment"
-        android:name="com.example.businesscard.feature.add_business_card.presentation.AddBusinessCardFragment"
+        android:id="@+id/businessCardRegistrationFragment"
+        android:name="com.example.businesscard.feature.business_card_registration.presentation.BusinessCardRegistrationFragment"
         android:label="fragment_add_business_card"
-        tools:layout="@layout/fragment_add_business_card" />
+        tools:layout="@layout/fragment_add_business_card">
+        <argument
+            android:name="businessCard"
+            app:argType="com.example.businesscard.common.data.model.BusinessCardModel"
+            app:nullable="true" />
+    </fragment>
 </navigation>

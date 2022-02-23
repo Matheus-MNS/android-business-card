@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.add_business_card.presentation.color_picker.ColorPickerDialogFragment">
+    tools:context=".feature.business_card_registration.presentation.color_picker.ColorPickerDialogFragment">
 
 
     <androidx.appcompat.widget.AppCompatTextView
