@@ -6,7 +6,7 @@ open class DomainException(message: String, title: String? = null) :
 sealed class ParamException(message: String, title: String? = null) :
     DomainException(message, title)
 
-class EmptyNameException: ParamException("Obrigatorio preencher nome")
-class EmptyCompanyException: ParamException("Obrigatorio preencher nome da empresa")
-class EmptyPhoneException: ParamException("Obrigatorio preencher telefone")
-class EmptyEmailException: ParamException("Obrigatorio preencher email")
+class EmptyNameException: ParamException("Campo de preenchimento obrigatório: Nome")
+class EmptyCompanyException: ParamException("Campo de preenchimento obrigatório: Empresa")
+class EmptyPhoneException: ParamException("Campo de preenchimento obrigatório: Telefone")
+class EmptyEmailException: ParamException("Campo de preenchimento obrigatório: Email")

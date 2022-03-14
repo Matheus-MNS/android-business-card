@@ -8,18 +8,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.businesscard.R
 import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.extensions.showDeleteDialog
 import com.example.businesscard.databinding.FragmentBusinessCardBinding
 import com.example.businesscard.feature.business_card_list.presentation.adapter.BusinessCardAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class BusinessCardFragment : Fragment() {
 
     private val binding by lazy { FragmentBusinessCardBinding.inflate(layoutInflater) }
     private val viewModel: BusinessCardListViewModel by viewModel()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +32,6 @@ class BusinessCardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         handleObserver()
-
         binding.addFab.setOnClickListener {
             navigateToBusinessCardRegistration()
         }
@@ -66,14 +64,15 @@ class BusinessCardFragment : Fragment() {
                 showDeleteDialog(
                     positiveAction = {
                         viewModel.deleteBusinessCard(it)
-                        Toast.makeText(context, "Cartão excluido", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, R.string.confirm_delete_card, Toast.LENGTH_LONG)
+                            .show()
                     },
                     negativeAction = {
-
+                        Toast.makeText(context, R.string.negative_delete_card, Toast.LENGTH_LONG)
+                            .show()
                     }
                 )
             }
         }
-
     }
 }
