@@ -23,7 +23,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -42,8 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textSize="14sp"
                 android:textColor="@color/white"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name"
                 tools:text="Telefone" />
@@ -54,9 +54,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@id/company"
-                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phone"
                 tools:text="email" />
@@ -65,12 +65,24 @@
                 android:id="@+id/company"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:textColor="@color/white"
+                android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/email"
+                app:layout_constraintTop_toTopOf="@id/email"
+                tools:text="Nome da Empresa" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Nome da Empresa" />
+                app:layout_constraintTop_toBottomOf="@id/company"
+                app:srcCompat="@drawable/ic_share" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,12 +1,15 @@
 package com.example.businesscard.feature.business_card_list.presentation.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.businesscard.common.data.model.BusinessCardModel
 import com.example.businesscard.common.extensions.setBackgroundTint
 import com.example.businesscard.common.utils.DefaultDiffCallback
+import com.example.businesscard.common.utils.Image
 import com.example.businesscard.databinding.ItemBusinessCardBinding
 
 class BusinessCardAdapter :
@@ -46,7 +49,11 @@ class BusinessCardAdapter :
                     onItemLongClick?.invoke(item)
                     return@setOnLongClickListener true
                 }
+                share.setOnClickListener {
+                    Image.share(itemView.context, businessCard)
+                }
             }
+
         }
     }
 }
