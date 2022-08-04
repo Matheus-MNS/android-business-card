@@ -16,4 +16,5 @@
     <string name="confirm_delete_text">Tem certeza que deseja deletar o cartão?</string>
     <string name="confirm_delete_card">Cartão deletado com sucesso?</string>
     <string name="negative_delete_card">Cartão não deletado.</string>
+    <string name="label_share_to">Compartilhar</string>
 </resources>
